@@ -78,25 +78,25 @@ BRUSHED.slider = function(){
 		thumbnail_navigation    :   0,			// Thumbnail navigation
 		slides 					:  	[			// Slideshow Images
 			{ 
-				image: '/static/img/slider-images/image01.jpg', 
+				image: 'img/slider-images/image01.jpg', 
 				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>', 
 				thumb: '', 
 				url: '' 
 			},
 			{ 
-				image: '/static/img/slider-images/image02.jpg', 
+				image: 'img/slider-images/image02.jpg', 
 				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>',
 				thumb: '', 
 				url: '' 
 			},
 			{ 
-				image: '/static/img/slider-images/image03.jpg', 
+				image: 'img/slider-images/image03.jpg', 
 				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>',
 				thumb: '', 
 				url: '' 
 			},
 			{ 
-				image: '/static/img/slider-images/image04.jpg', 
+				image: 'img/slider-images/image04.jpg', 
 				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>',
 				thumb: '', 
 				url: '' 
@@ -244,7 +244,7 @@ BRUSHED.tweetFeed = function(){
 	var valueTop = -64; // Margin Top Value
 	
     $("#ticker").tweet({
-          modpath: '/static/js/twitter/',
+          modpath: 'js/twitter/',
           username: "Bluxart", // Change this with YOUR ID
           page: 1,
           avatar_size: 0,
@@ -427,7 +427,7 @@ $(document).ready(function(){
 	Modernizr.load([
 	{
 		test: Modernizr.placeholder,
-		nope: '/static/js/placeholder.js', 
+		nope: 'js/placeholder.js', 
 		complete : function() {
 				if (!Modernizr.placeholder) {
 						Placeholders.init({
