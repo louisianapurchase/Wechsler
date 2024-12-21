@@ -11,6 +11,10 @@ Version: 1.0
 /* ==================================================
    Basic Styles
 ================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
 
 html, body {
 	height: 100%;
@@ -30,6 +34,7 @@ body{
 	font-size:16px;
 	font-family: 'Titillium Web', sans-serif;
 	line-height:28px;
+	scroll-padding-top: 60px;  
 }
 
 
