@@ -698,16 +698,18 @@ nav#menu #menu-nav li a:hover {
 
 .work-nav #filters li a {
 	color: #7F8289;
-	font-size: 16px;
+	font-size: 20px;
 	display: block;	
 }
 
 .work-nav #filters li a:hover {
 	color: #FFFFFF;
+	font-size: 20px;
 }
 
 .work-nav #filters li a.selected {
 	color: #DE5E60;
+	font-size: 20px;
 }
 
 #thumbs {
@@ -784,6 +786,26 @@ nav#menu #menu-nav li a:hover {
 	
 	opacity: 1;
 	filter: alpha(opacity=100);
+}
+.thumb-title {
+    text-align: center; /* Centers the text under the image */
+    font-size: 1em; /* Adjust font size */
+    color: #333; /* Set the desired text color */
+    margin-top: 8px; /* Adds spacing between the image and text */
+}
+
+
+.fancybox-inner {
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    max-height: 100%; /* Restrict content height to fit within the popup */
+    padding: 15px; /* Optional: Add padding for better readability */
+    box-sizing: border-box;
+}
+
+.fancybox-skin {
+    background-color: #fff; /* Optional: Adjust background color for better visibility */
+    border-radius: 8px; /* Optional: Add rounded corners for styling */
 }
 
 

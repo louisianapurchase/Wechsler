@@ -203,6 +203,25 @@ BRUSHED.fancyBox = function(){
 		});
 	}
 }
+$(document).ready(function () {
+    $(".fancybox").fancybox({
+        maxWidth: 800, // Set maximum width for the popup
+        maxHeight: 600, // Set maximum height for the popup
+        fitToView: true,
+        width: '70%', // Adjust as necessary
+        height: '70%', // Adjust as necessary
+        autoSize: false,
+        closeClick: false,
+        openEffect: 'none',
+        closeEffect: 'none',
+        helpers: {
+            overlay: {
+                locked: false
+            }
+        },
+        scrolling: 'yes' // Enable scrolling inside the popup
+    });
+});
 
 
 /* ==================================================
