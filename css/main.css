@@ -790,7 +790,7 @@ nav#menu #menu-nav li a:hover {
 .thumb-title {
     text-align: center; /* Centers the text under the image */
     font-size: 1em; /* Adjust font size */
-    color: #333; /* Set the desired text color */
+    color: #ffffff; /* Set the desired text color */
     margin-top: 8px; /* Adds spacing between the image and text */
 }
 
