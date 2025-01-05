@@ -732,7 +732,7 @@ nav#menu #menu-nav li a:hover {
 	width: 100%;	
 }
 
-.fancybox-inner {
+.fancybox-inner .hover-wrap{
     overflow: auto; /* Enable both vertical and horizontal scrolling if needed */
     max-height: 90vh; /* Limit the height to 90% of the viewport height */
     max-width: 90vw; /* Limit the width to 90% of the viewport width */
