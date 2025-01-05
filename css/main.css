@@ -829,28 +829,19 @@ nav#menu #menu-nav li a:hover {
     background: #555;
 }
 
-
-.scrollable-content {
-    max-height: 80vh; /* Limit the height of the popup */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 15px; /* Add padding for better appearance */
-    box-sizing: border-box; /* Include padding in the height calculation */
-}
-
-/* Optional: Customize scrollbar styles */
-.scrollable-content::-webkit-scrollbar {
-    width: 10px;
-}
-
-.scrollable-content::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-}
-
-.scrollable-content::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
+.modal-content {
+	max-height: 80vh; /* Adjust to control the maximum height of the modal */
+	overflow: hidden; /* Prevent overflowing elements */
+	display: flex;
+	flex-direction: column; /* Ensure the text and image stack properly */
+  }
+  
+  .modal-description {
+	overflow-y: auto; /* Enable vertical scrolling */
+	max-height: 50vh; /* Control the height of the description area */
+	padding: 1rem; /* Add spacing around the text */
+  }
+  
 /* ==================================================
    About Section
 ================================================== */
