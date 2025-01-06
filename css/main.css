@@ -702,7 +702,7 @@ nav#menu #menu-nav li a:hover {
 }
 
 .work-nav #filters li a {
-    color: #7F8289;
+    color: #ffffff;
     font-size: 20px;
     display: block;
     text-transform: uppercase;
@@ -711,7 +711,7 @@ nav#menu #menu-nav li a:hover {
 }
 
 .work-nav #filters li a:hover {
-    color: #FFFFFF;
+    color: #ff8e8e;
 }
 
 .work-nav #filters li a.selected {
