@@ -180,48 +180,46 @@ BRUSHED.filter = function (){
    FancyBox
 ================================================== */
 
-BRUSHED.fancyBox = function(){
-	if($('.fancybox').length > 0 || $('.fancybox-media').length > 0 || $('.fancybox-various').length > 0){
-		
-		$(".fancybox").fancybox({				
-				padding : 0,
-				beforeShow: function () {
-					this.title = $(this.element).attr('title');
-					this.title = '<h4>' + this.title + '</h4>' + '<p>' + $(this.element).parent().find('img').attr('alt') + '</p>';
-				},
-				helpers : {
-					title : { type: 'inside' },
-				}
-			});
-			
-		$('.fancybox-media').fancybox({
-			openEffect  : 'none',
-			closeEffect : 'none',
-			helpers : {
-				media : {}
-			}
-		});
-	}
-}
-$(document).ready(function () {
-    $(".fancybox").fancybox({
-        maxWidth: 800, // Set maximum width for the popup
-        maxHeight: 600, // Set maximum height for the popup
-        fitToView: true,
-        width: '70%', // Adjust as necessary
-        height: '70%', // Adjust as necessary
-        autoSize: false,
-        closeClick: false,
-        openEffect: 'none',
-        closeEffect: 'none',
-        helpers: {
-            overlay: {
-                locked: false
+BRUSHED.fancyBox = function() {
+    if ($('.fancybox').length > 0 || $('.fancybox-media').length > 0 || $('.fancybox-various').length > 0) {
+        $(".fancybox").fancybox({
+            padding: 0,
+            maxWidth: 800, // Set maximum width for the popup
+            maxHeight: 600, // Set maximum height for the popup
+            fitToView: true,
+            width: '70%', // Adjust width to make it responsive
+            height: '70%', // Adjust height as necessary
+            autoSize: true, // Disable automatic sizing
+            closeClick: false,
+            openEffect: 'none',
+            closeEffect: 'none',
+            scrolling: 'yes', // Ensure scrolling inside the popup
+            beforeShow: function () {
+                const element = $(this.element);
+                const title = element.attr('title');
+                const alt = element.parent().find('img').attr('alt');
+                this.title = `<h4>${title}</h4><p>${alt}</p>`;
+            },
+            helpers: {
+                title: { type: 'inside' },
+                overlay: { locked: false }
             }
-        },
-        scrolling: 'yes' // Enable scrolling inside the popup
-    });
+        });
+
+        // Media-specific Fancybox
+        $('.fancybox-media').fancybox({
+            openEffect: 'none',
+            closeEffect: 'none',
+            helpers: { media: {} }
+        });
+    }
+};
+
+// Initialize on document ready
+$(document).ready(function () {
+    BRUSHED.fancyBox();
 });
+
 
 
 /* ==================================================

@@ -677,108 +677,93 @@ nav#menu #menu-nav li a:hover {
 ================================================== */
 
 .type-work {
-	color: #FFFFFF;
-	font-size: 24px;
-	font-weight: 300;
-	margin-bottom: 30px;
-	line-height: 1em;
-	text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    line-height: 1em;
+    text-transform: uppercase;
 }
 
 .work-nav #filters {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex; /* Align filters horizontally */
+    justify-content: center; /* Center-align the filters */
+    gap: 15px; /* Add spacing between items */
 }
 
 .work-nav #filters li {
-	margin: 0 0 30px 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .work-nav #filters li a {
-	color: #7F8289;
-	font-size: 20px;
-	display: block;	
+    color: #7F8289;
+    font-size: 20px;
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .work-nav #filters li a:hover {
-	color: #FFFFFF;
-	font-size: 20px;
+    color: #FFFFFF;
 }
 
 .work-nav #filters li a.selected {
-	color: #DE5E60;
-	font-size: 20px;
+    color: #DE5E60;
+    font-weight: bold;
+    border-bottom: 2px solid #DE5E60; /* Highlight active filter */
 }
 
 #thumbs {
-	margin: 0;
-	padding: 0;	
+    margin: 0;
+    padding: 0;
+    display: grid; /* Modern layout for thumbnails */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 15px; /* Space between items */
 }
 
 #thumbs li {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 .item-thumbs {
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 30px;
-	cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.item-thumbs a + img {
-	width: 100%;	
+.item-thumbs:hover {
+    transform: scale(1.05); /* Subtle zoom on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Highlight on hover */
 }
 
-.fancybox-inner .hover-wrap{
-    overflow: auto; /* Enable both vertical and horizontal scrolling if needed */
-    max-height: 90vh; /* Limit the height to 90% of the viewport height */
-    max-width: 90vw; /* Limit the width to 90% of the viewport width */
-    padding: 15px; /* Optional: Add padding for better readability */
-    box-sizing: border-box;
-}
-
-.fancybox-image {
-    max-width: 100%; /* Prevents the image from exceeding the container's width */
-    max-height: 80vh; /* Limit the image height to 80% of the viewport height */
-    object-fit: contain; /* Ensures the image scales correctly within the container */
-}
-
-.fancybox-description {
-    max-height: 40vh; /* Limits the description height */
-    overflow-y: auto; /* Enables vertical scrolling for the description */
-    margin-top: 10px; /* Adds spacing between the image and the description */
+.item-thumbs img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .item-thumbs .hover-wrap {
     position: absolute;
-    display: block;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.6);
     opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transition: all 450ms ease-out 0s;
-    -moz-transition: all 450ms ease-out 0s;
-    -o-transition: all 450ms ease-out 0s;
-    transition: all 450ms ease-out 0s;
-    -webkit-transform: rotateY(180deg) scale(0.5,0.5);
-    -moz-transform: rotateY(180deg) scale(0.5,0.5);
-    -ms-transform: rotateY(180deg) scale(0.5,0.5);
-    -o-transform: rotateY(180deg) scale(0.5,0.5);
-    transform: rotateY(180deg) scale(0.5,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
 }
 
-.item-thumbs:hover .hover-wrap,
-.item-thumbs.active .hover-wrap {
+.item-thumbs:hover .hover-wrap {
     opacity: 1;
-    filter: alpha(opacity=100);
-    -webkit-transform: rotateY(0deg) scale(1,1);
-    -moz-transform: rotateY(0deg) scale(1,1);
-    -ms-transform: rotateY(0deg) scale(1,1);
-    -o-transform: rotateY(0deg) scale(1,1);
-    transform: rotateY(0deg) scale(1,1);
 }
 
 .item-thumbs .hover-wrap .overlay-img {
@@ -786,20 +771,17 @@ nav#menu #menu-nav li a:hover {
     width: 100%;
     height: 100%;
     background: #DE5E60;
-    opacity: 0.80;
-    filter: alpha(opacity=80);
+    opacity: 0.8;
 }
 
 .item-thumbs .hover-wrap .overlay-img-thumb {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -16px 0 0 -16px;
+    transform: translate(-50%, -50%);
     color: #FFFFFF;
     font-size: 32px;
-    line-height: 1em;
-    opacity: 1;
-    filter: alpha(opacity=100);
+    text-align: center;
 }
 
 .thumb-title {
@@ -809,32 +791,56 @@ nav#menu #menu-nav li a:hover {
     margin-top: 8px;
 }
 
+.fancybox-inner {
+    overflow: auto;
+    max-height: 90vh;
+    max-width: 90vw;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.fancybox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.fancybox-description {
+    max-height: 40vh;
+    overflow-y: auto;
+    margin-top: 10px;
+}
 
 .fancybox-skin {
-    background-color: #fff; /* Optional: Adjust background color for better visibility */
-    border-radius: 8px; /* Optional: Add rounded corners for styling */
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 .fancybox-content {
-    max-height: 80vh; /* Adjust height as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 15px; /* Optional: Add padding for better appearance */
-    box-sizing: border-box; /* Ensure padding is included in the height */
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
-/* Optional: Style the scrollbar for better aesthetics */
 .fancybox-content::-webkit-scrollbar {
     width: 10px;
 }
 
 .fancybox-content::-webkit-scrollbar-thumb {
-    background: #888; /* Customize scrollbar color */
+    background: #888;
     border-radius: 5px;
 }
 
 .fancybox-content::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.fancybox-lock {
+    overflow: hidden;
+    margin-right: 0 !important;
+}
+
 
 
 
