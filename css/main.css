@@ -689,10 +689,12 @@ nav#menu #menu-nav li a:hover {
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex; /* Align filters horizontally */
-    justify-content: center; /* Center-align the filters */
+    display: flex; /* Keeps it a flex container */
+    flex-direction: column; /* Stack filters vertically */
+    align-items: flex-start; /* Align the items to the left */
     gap: 15px; /* Add spacing between items */
 }
+
 
 .work-nav #filters li {
     margin: 0;
