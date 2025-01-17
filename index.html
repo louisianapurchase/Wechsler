@@ -187,7 +187,47 @@
                                         <span class="overlay-img-thumb font-icon-plus"></span>
                                     </a>
                                      Thumb Image and Description 
-                                    <img src="img/work/thumbs/image-02.jpg " alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                                    <img src="img/work/thumbs/image-02.jpg " alt="Sure! Here's a professional project description you can use for your portfolio:
+
+---
+
+### Project: Privacy Policy & Contract Risk Analyzer
+
+**Description:**
+The Privacy Policy & Contract Risk Analyzer is a web-based tool designed to help users better understand the content and potential risks hidden within privacy policies, terms of service agreements, and other legal contracts. By utilizing state-of-the-art Natural Language Processing (NLP) techniques, including text summarization, sentiment analysis, and legal risk classification, this tool offers a comprehensive evaluation of legal documents. It helps individuals and organizations quickly assess the overall risk and potential malicious intent in agreements.
+
+**Key Features:**
+- **Summarization:** The tool uses Hugging Face's powerful `facebook/bart-large-cnn` summarization model to generate concise and meaningful summaries of long and complex terms of service or privacy policies. This makes it easier for users to digest lengthy documents.
+  
+- **Risk Scoring:** The system assigns a risk score based on several factors commonly found in legal documents, such as GDPR compliance, data-sharing clauses, liability waivers, and user rights. A higher score indicates a greater potential for risk, and the score is accompanied by a detailed breakdown of identified risks.
+
+- **Sentiment Analysis:** A sentiment analysis model assesses the tone of the document, providing insight into the document’s potential malice. This score is normalized on a scale from 0 to 100, with higher scores indicating a more favorable or neutral tone.
+
+- **Legal Risk Breakdown:** The tool provides a clear, structured breakdown of any problematic clauses found in the text, such as data-sharing terms, liability clauses, and compliance with data protection laws like GDPR. This breakdown helps users understand exactly where potential issues lie in a contract.
+
+- **API Integration:** The system is built using Flask and integrates with NLP models from Hugging Face to provide real-time summarization and risk scoring. It also supports CORS, allowing for seamless integration with web-based applications.
+
+**Technologies Used:**
+- **Natural Language Processing (NLP):** Hugging Face Transformers, specifically `facebook/bart-large-cnn` for summarization, and `nltk` for sentiment analysis.
+- **Backend Development:** Flask for the API server.
+- **Machine Learning:** Sentiment analysis using NLTK’s SentimentIntensityAnalyzer and custom scoring algorithms for legal text risk classification.
+- **Web Development:** Flask-CORS for cross-origin resource sharing (CORS) to ensure smooth integration with client-side applications.
+
+**Benefits:**
+- Provides a simple and effective way to analyze privacy policies, terms of service, and contracts for potential risks, saving time and effort compared to manually reading and interpreting legal jargon.
+- Offers an actionable risk score and breakdown, empowering users to make informed decisions about whether to proceed with a service or agree to a contract.
+- Ideal for privacy-conscious consumers, businesses evaluating third-party agreements, and legal teams seeking a quick analysis tool for contracts.
+
+**Challenges & Solutions:**
+- **Challenge:** Legal documents often contain complex and domain-specific language, making it difficult for traditional NLP models to handle effectively.
+  - **Solution:** By customizing risk factor identification (e.g., GDPR compliance, data-sharing clauses) and leveraging a pre-trained summarization model, the tool is able to provide meaningful insights into these types of documents.
+  
+- **Challenge:** Handling large amounts of text and providing accurate risk classifications without false positives.
+  - **Solution:** A multi-stage approach, including sentiment analysis and risk factor identification, ensures that only truly relevant risks are flagged, improving accuracy and reducing unnecessary alerts.
+
+---
+
+This description effectively highlights the tool's functionality, technologies used, and its value to users, making it suitable for inclusion in your portfolio..">
                                 </li>
                                 End Item Project -->
                                 
