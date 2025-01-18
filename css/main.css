@@ -745,7 +745,7 @@ nav#menu #menu-nav li a:hover {
 }
 
 .item-thumbs img {
-    width: 100%;
+    width: 600px;
     height: auto;
     display: block;
 }
@@ -802,7 +802,7 @@ nav#menu #menu-nav li a:hover {
 }
 
 .fancybox-image {
-    max-width: 100%;
+    width: 600px;
     max-height: 80vh;
     object-fit: contain;
 }
