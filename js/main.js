@@ -79,25 +79,25 @@ BRUSHED.slider = function(){
 		slides 					:  	[			// Slideshow Images
 			{ 
 				image: 'img/slider-images/image01.jpg', 
-				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>', 
+			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>', 
 				thumb: '', 
 				url: '' 
 			},
 			{ 
 				image: 'img/slider-images/image02.jpg', 
-				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>',
+			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>',
 				thumb: '', 
 				url: '' 
 			},
 			{ 
 				image: 'img/slider-images/image03.jpg', 
-				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>',
+			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>',
 				thumb: '', 
 				url: '' 
 			},
 			{ 
 				image: 'img/slider-images/image04.jpg', 
-				title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Analyst | Full Stack Developer | Data Visualizer</div></div>',
+			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>',
 				thumb: '', 
 				url: '' 
 			}
@@ -128,51 +128,51 @@ BRUSHED.nav = function(){
 ================================================== */
 
 BRUSHED.filter = function () {
-    if ($('#projects').length > 0) {
-        var $container = $('#projects');
+	if ($('#projects').length > 0) {
+		var $container = $('#projects');
 
-        $container.imagesLoaded(function() {
-            $container.isotope({
-                animationEngine: 'best-available',
-                itemSelector: '.item-thumbs',
-                layoutMode: 'fitRows'
-            });
-        });
+		$container.imagesLoaded(function() {
+			$container.isotope({
+				animationEngine: 'best-available',
+				itemSelector: '.item-thumbs',
+				layoutMode: 'fitRows'
+			});
+		});
 
-        // filter items when filter link is clicked
-        var $optionSets = $('#options .option-set'),
-            $optionLinks = $optionSets.find('a');
+		// filter items when filter link is clicked
+		var $optionSets = $('#options .option-set'),
+			$optionLinks = $optionSets.find('a');
 
-        $optionLinks.click(function() {
-            var $this = $(this);
-            // don't proceed if already selected
-            if ($this.hasClass('selected')) {
-                return false;
-            }
-            var $optionSet = $this.parents('.option-set');
-            $optionSet.find('.selected').removeClass('selected');
-            $this.addClass('selected');
+		$optionLinks.click(function() {
+			var $this = $(this);
+			// don't proceed if already selected
+			if ($this.hasClass('selected')) {
+				return false;
+			}
+			var $optionSet = $this.parents('.option-set');
+			$optionSet.find('.selected').removeClass('selected');
+			$this.addClass('selected');
 
-            // make option object dynamically, i.e. { filter: '.my-filter-class' }
-            var options = {},
-                key = $optionSet.attr('data-option-key'),
-                value = $this.attr('data-option-value');
-            // parse 'false' as false boolean
-            value = value === 'false' ? false : value;
-            options[key] = value;
+			// make option object dynamically, i.e. { filter: '.my-filter-class' }
+			var options = {},
+				key = $optionSet.attr('data-option-key'),
+				value = $this.attr('data-option-value');
+			// parse 'false' as false boolean
+			value = value === 'false' ? false : value;
+			options[key] = value;
 
-            // Handle layoutMode changes
-            if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
-                // changes in layout modes need extra logic
-                changeLayoutMode($this, options);
-            } else {
-                // otherwise, apply new options
-                $container.isotope(options);
-            }
+			// Handle layoutMode changes
+			if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
+				// changes in layout modes need extra logic
+				changeLayoutMode($this, options);
+			} else {
+				// otherwise, apply new options
+				$container.isotope(options);
+			}
 
-            return false;
-        });
-    }
+			return false;
+		});
+	}
 }
 
 
@@ -182,43 +182,43 @@ BRUSHED.filter = function () {
 ================================================== */
 
 BRUSHED.fancyBox = function() {
-    if ($('.fancybox').length > 0 || $('.fancybox-media').length > 0 || $('.fancybox-various').length > 0) {
-        $(".fancybox").fancybox({
-            padding: 0,
-            maxWidth: 800, // Set maximum width for the popup
-            maxHeight: 600, // Set maximum height for the popup
-            fitToView: true,
-            width: '70%', // Adjust width to make it responsive
-            height: '70%', // Adjust height as necessary
-            autoSize: true, // Disable automatic sizing
-            closeClick: false,
-            openEffect: 'none',
-            closeEffect: 'none',
-            scrolling: 'yes', // Ensure scrolling inside the popup
-            beforeShow: function () {
-                const element = $(this.element);
-                const title = element.attr('title');
-                const alt = element.parent().find('img').attr('alt');
-                this.title = `<h4>${title}</h4><p>${alt}</p>`;
-            },
-            helpers: {
-                title: { type: 'inside' },
-                overlay: { locked: false }
-            }
-        });
+	if ($('.fancybox').length > 0 || $('.fancybox-media').length > 0 || $('.fancybox-various').length > 0) {
+		$(".fancybox").fancybox({
+			padding: 0,
+			maxWidth: 800, // Set maximum width for the popup
+			maxHeight: 600, // Set maximum height for the popup
+			fitToView: true,
+			width: '70%', // Adjust width to make it responsive
+			height: '70%', // Adjust height as necessary
+			autoSize: true, // Disable automatic sizing
+			closeClick: false,
+			openEffect: 'none',
+			closeEffect: 'none',
+			scrolling: 'yes', // Ensure scrolling inside the popup
+			beforeShow: function () {
+				const element = $(this.element);
+				const title = element.attr('title');
+				const alt = element.parent().find('img').attr('alt');
+				this.title = `<h4>${title}</h4><p>${alt}</p>`;
+			},
+			helpers: {
+				title: { type: 'inside' },
+				overlay: { locked: false }
+			}
+		});
 
-        // Media-specific Fancybox
-        $('.fancybox-media').fancybox({
-            openEffect: 'none',
-            closeEffect: 'none',
-            helpers: { media: {} }
-        });
-    }
+		// Media-specific Fancybox
+		$('.fancybox-media').fancybox({
+			openEffect: 'none',
+			closeEffect: 'none',
+			helpers: { media: {} }
+		});
+	}
 };
 
 // Initialize on document ready
 $(document).ready(function () {
-    BRUSHED.fancyBox();
+	BRUSHED.fancyBox();
 });
 
 
@@ -261,15 +261,15 @@ BRUSHED.tweetFeed = function(){
 	
 	var valueTop = -64; // Margin Top Value
 	
-    $("#ticker").tweet({
-          modpath: 'js/twitter/',
-          username: "Bluxart", // Change this with YOUR ID
-          page: 1,
-          avatar_size: 0,
-          count: 10,
+	$("#ticker").tweet({
+		  modpath: 'js/twitter/',
+		  username: "Bluxart", // Change this with YOUR ID
+		  page: 1,
+		  avatar_size: 0,
+		  count: 10,
 		  template: "{text}{time}",
 		  filter: function(t){ return ! /^@\w+/.test(t.tweet_raw_text); },
-          loading_text: "loading ..."
+		  loading_text: "loading ..."
 	}).bind("loaded", function() {
 	  var ul = $(this).find(".tweet_list");
 	  var ticker = function() {
@@ -293,10 +293,10 @@ BRUSHED.tweetFeed = function(){
 BRUSHED.menu = function(){
 	$('#menu-nav, #menu-nav-mobile').onePageNav({
 		currentClass: 'current',
-    	changeHash: false,
-    	scrollSpeed: 750,
-    	scrollOffset: 30,
-    	scrollThreshold: 0.5,
+		changeHash: false,
+		scrollSpeed: 750,
+		scrollOffset: 30,
+		scrollThreshold: 0.5,
 		easing: 'easeOutExpo',
 		filter: ':not(.external)'
 	});
@@ -369,18 +369,18 @@ BRUSHED.utils = function(){
 	
 	$('.item-thumbs').bind('touchstart', function(){
 		$(".active").removeClass("active");
-      	$(this).addClass('active');
-    });
+		$(this).addClass('active');
+	});
 	
 	$('.image-wrap').bind('touchstart', function(){
 		$(".active").removeClass("active");
-      	$(this).addClass('active');
-    });
+		$(this).addClass('active');
+	});
 	
 	$('#social ul li').bind('touchstart', function(){
 		$(".active").removeClass("active");
-      	$(this).addClass('active');
-    });
+		$(this).addClass('active');
+	});
 	
 }
 
@@ -394,14 +394,14 @@ BRUSHED.accordion = function(){
 	accordion_trigger.delegate('.accordion-toggle','click', function(event){
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
-		   	$(this).addClass('inactive');
+			$(this).addClass('inactive');
 		}
 		else{
-		  	accordion_trigger.find('.active').addClass('inactive');          
-		  	accordion_trigger.find('.active').removeClass('active');   
-		  	$(this).removeClass('inactive');
-		  	$(this).addClass('active');
-	 	}
+			accordion_trigger.find('.active').addClass('inactive');          
+			accordion_trigger.find('.active').removeClass('active');   
+			$(this).removeClass('inactive');
+			$(this).addClass('active');
+		}
 		event.preventDefault();
 	});
 }
@@ -416,12 +416,12 @@ BRUSHED.toggle = function(){
 	accordion_trigger_toggle.delegate('.accordion-toggle','click', function(event){
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
-		   	$(this).addClass('inactive');
+			$(this).addClass('inactive');
 		}
 		else{
-		  	$(this).removeClass('inactive');
-		  	$(this).addClass('active');
-	 	}
+			$(this).removeClass('inactive');
+			$(this).addClass('active');
+		}
 		event.preventDefault();
 	});
 }
@@ -431,7 +431,7 @@ BRUSHED.toggle = function(){
 ================================================== */
 
 BRUSHED.toolTip = function(){ 
-    $('a[data-toggle=tooltip]').tooltip();
+	$('a[data-toggle=tooltip]').tooltip();
 }
 
 
