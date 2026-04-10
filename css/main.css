@@ -1464,3 +1464,40 @@ footer .credits {
     text-align: center;   /* Centers the subtitle */
     z-index: 11;          /* Ensures subtitle is not overlapped by other elements */
 }
+
+/* ==================================================
+   Services Section
+================================================== */
+
+.service-box {
+background: #3C3F45;
+padding: 30px;
+margin-bottom: 30px;
+border-radius: 5px;
+border-left: 4px solid #DE5E60;
+
+-webkit-transition: all 0.3s ease 0s;
+   -moz-transition: all 0.3s ease 0s;
+ -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.service-box:hover {
+background: #424752;
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.service-box h3 {
+color: #FFFFFF;
+font-size: 18px;
+margin-bottom: 15px;
+font-weight: 600;
+}
+
+.service-box p {
+color: #B0B5BC;
+font-size: 14px;
+line-height: 24px;
+margin: 0;
+}

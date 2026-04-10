@@ -1,0 +1,81 @@
+# Contact Information - SENSITIVE
+php/contacts.json
+php/contact_backups/
+php/*.backup
+
+# Contact Viewer - Avoid exposing admin interface
+php/view_contacts.php
+
+# Environment and Configuration
+.env
+.env.local
+.env.*.local
+config.php
+settings.php
+
+# System Files
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Editor and IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.sublime-project
+*.sublime-workspace
+.eslintignore
+
+# Node and Package Management
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build and Compilation
+dist/
+build/
+*.o
+*.a
+*.so
+*.dylib
+
+# Logs
+logs/
+*.log
+
+# OS and Temporary Files
+*.tmp
+*.bak
+*.swp
+.cache/
+tmp/
+
+# Database Files (if any)
+*.db
+*.sqlite
+*.sqlite3
+
+# Development Files
+.env.development
+.env.test
+debug.log
+
+# Sensitive Information (catch-all)
+**/secrets/
+**/private/
+**/*_private.*
+**/*.password
+**/*.token
+**/*.key

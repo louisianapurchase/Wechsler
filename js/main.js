@@ -79,25 +79,25 @@ BRUSHED.slider = function(){
 		slides 					:  	[			// Slideshow Images
 			{ 
 				image: 'img/slider-images/image01.jpg', 
-			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>', 
+			   title: '<div class="slide-content"><div class="title">Mountain Lion Tech</div><div class="subtitle">Data Science & Engineering Consulting | Full Stack Development</div></div>', 
 				thumb: '', 
 				url: '' 
 			},
 			{ 
 				image: 'img/slider-images/image02.jpg', 
-			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>',
+			   title: '<div class="slide-content"><div class="title">Mountain Lion Tech</div><div class="subtitle">Data Science & Engineering Consulting | Full Stack Development</div></div>',
 				thumb: '', 
 				url: '' 
 			},
 			{ 
 				image: 'img/slider-images/image03.jpg', 
-			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>',
+			   title: '<div class="slide-content"><div class="title">Mountain Lion Tech</div><div class="subtitle">Data Science & Engineering Consulting | Full Stack Development</div></div>',
 				thumb: '', 
 				url: '' 
 			},
 			{ 
 				image: 'img/slider-images/image04.jpg', 
-			   title: '<div class="slide-content"><div class="title">Aaron Wechsler</div><div class="subtitle">Data Scientist/Engineer | Full Stack Developer | AI Automation</div></div>',
+			   title: '<div class="slide-content"><div class="title">Mountain Lion Tech</div><div class="subtitle">Data Science & Engineering Consulting | Full Stack Development</div></div>',
 				thumb: '', 
 				url: '' 
 			}
@@ -221,69 +221,104 @@ $(document).ready(function () {
 	BRUSHED.fancyBox();
 });
 
-
-
 /* ==================================================
-   Contact Form
+   Firebase Configuration & Contact Form
 ================================================== */
 
+const firebaseConfig = {
+	apiKey: "AIzaSyCDLlSRBEqFPG-bWqnv6nfaJfu1XTLPc_4",
+	authDomain: "mountainliontech-f4a19.firebaseapp.com",
+	projectId: "mountainliontech-f4a19",
+	storageBucket: "mountainliontech-f4a19.firebasestorage.app",
+	messagingSenderId: "605785106462",
+	appId: "1:605785106462:web:70299abcafea61cf74260f"
+};
+
+let db = null;
+
+// Initialize Firebase when it's available
+function initFirebase() {
+	if (typeof firebase !== 'undefined' && typeof firebase.initializeApp !== 'undefined') {
+		try {
+			firebase.initializeApp(firebaseConfig);
+			db = firebase.firestore();
+		} catch(e) {
+			console.error('Firebase initialization error:', e);
+		}
+	} else {
+		setTimeout(initFirebase, 100);
+	}
+}
+
+// Initialize Firebase immediately
+initFirebase();
+
 BRUSHED.contactForm = function(){
-	$("#contact-submit").on('click',function() {
-		$contact_form = $('#contact-form');
+	var submitBtn = document.getElementById('contact-submit');
+	
+	if (!submitBtn) {
+		console.error('Contact form button not found in DOM');
+		return;
+	}
+	
+	submitBtn.addEventListener('click', function(e) {
+		e.preventDefault();
 		
-		var fields = $contact_form.serialize();
+		if (!db) {
+			document.getElementById('response').innerHTML = '<p style="color: #ff6b6b;">Firebase not ready. Please refresh the page.</p>';
+			return false;
+		}
 		
-		$.ajax({
-			type: "POST",
-			url: "_include/php/contact.php",
-			data: fields,
-			dataType: 'json',
-			success: function(response) {
-				
-				if(response.status){
-					$('#contact-form input').val('');
-					$('#contact-form textarea').val('');
-				}
-				
-				$('#response').empty().html(response.html);
-			}
+		var name = document.getElementById('contact_name').value.trim();
+		var email = document.getElementById('contact_email').value.trim();
+		var phone = document.getElementById('contact_phone').value.trim();
+		var message = document.getElementById('contact_message').value.trim();
+		var responseDiv = document.getElementById('response');
+		
+		responseDiv.innerHTML = '';
+		
+		if(!name) {
+			responseDiv.innerHTML = '<p style="color: #ff6b6b;">Please enter your name</p>';
+			return false;
+		}
+		if(!email || !email.includes('@')) {
+			responseDiv.innerHTML = '<p style="color: #ff6b6b;">Please enter a valid email</p>';
+			return false;
+		}
+		if(!message || message.length < 5) {
+			responseDiv.innerHTML = '<p style="color: #ff6b6b;">Please enter a message (at least 5 characters)</p>';
+			return false;
+		}
+		
+		responseDiv.innerHTML = '<p style="color: #3498db;">Sending...</p>';
+		submitBtn.disabled = true;
+		submitBtn.style.opacity = '0.6';
+		
+		db.collection("contacts").add({
+			name: name,
+			email: email,
+			phone: phone,
+			message: message,
+			timestamp: firebase.firestore.FieldValue.serverTimestamp()
+		})
+		.then(function(docRef) {
+			document.getElementById('contact-form').reset();
+			responseDiv.innerHTML = '<p style="color: #2ecc71;"><strong>Thank You!</strong></p><p>Your message has been received. We\'ll get back to you soon.</p>';
+			submitBtn.disabled = false;
+			submitBtn.style.opacity = '1';
+		})
+		.catch(function(error) {
+			console.error('Message submission error:', error);
+			responseDiv.innerHTML = '<p style="color: #ff6b6b;"><strong>Error:</strong> ' + error.message + '</p>';
+			submitBtn.disabled = false;
+			submitBtn.style.opacity = '1';
 		});
+		
 		return false;
 	});
 }
 
 
-/* ==================================================
-   Twitter Feed
-================================================== */
-
-BRUSHED.tweetFeed = function(){
-	
-	var valueTop = -64; // Margin Top Value
-	
-	$("#ticker").tweet({
-		  modpath: 'js/twitter/',
-		  username: "Bluxart", // Change this with YOUR ID
-		  page: 1,
-		  avatar_size: 0,
-		  count: 10,
-		  template: "{text}{time}",
-		  filter: function(t){ return ! /^@\w+/.test(t.tweet_raw_text); },
-		  loading_text: "loading ..."
-	}).bind("loaded", function() {
-	  var ul = $(this).find(".tweet_list");
-	  var ticker = function() {
-		setTimeout(function() {
-			ul.find('li:first').animate( {marginTop: valueTop + 'px'}, 500, 'linear', function() {
-				$(this).detach().appendTo(ul).removeAttr('style');
-			});	
-		  ticker();
-		}, 5000);
-	  };
-	  ticker();
-	});
-	
-}
 
 
 /* ==================================================
@@ -448,43 +483,54 @@ $(document).ready(function(){
 		nope: 'js/placeholder.js', 
 		complete : function() {
 				if (!Modernizr.placeholder) {
-						Placeholders.init({
-						live: true,
-						hideOnFocus: false,
-						className: "yourClass",
-						textColor: "#999"
-						});    
+					try {
+						if (typeof Placeholders !== 'undefined' && typeof Placeholders.init === 'function') {
+							Placeholders.init({
+								live: true,
+								hideOnFocus: false,
+								className: "yourClass",
+								textColor: "#999"
+							});    
+						}
+					} catch(e) {
+						console.error('Placeholder polyfill initialization error:', e);
+					}
 				}
 		}
 	}
 	]);
 	
 	// Preload the page with jPreLoader
-	$('body').jpreLoader({
-		splashID: "#jSplash",
-		showSplash: true,
-		showPercentage: true,
-		autoClose: true,
-		splashFunction: function() {
-			$('#circle').delay(250).animate({'opacity' : 1}, 500, 'linear');
+	try {
+		if (typeof jQuery.fn.jpreLoader === 'function') {
+			$('body').jpreLoader({
+				splashID: "#jSplash",
+				showSplash: true,
+				showPercentage: true,
+				autoClose: true,
+				splashFunction: function() {
+					$('#circle').delay(250).animate({'opacity' : 1}, 500, 'linear');
+				}
+			});
 		}
-	});
+	} catch(e) {
+		console.error('Page preloader initialization error:', e);
+	}
 	
-	BRUSHED.nav();
-	BRUSHED.mobileNav();
-	BRUSHED.listenerMenu();
-	BRUSHED.menu();
-	BRUSHED.goSection();
-	BRUSHED.goUp();
-	BRUSHED.filter();
-	BRUSHED.fancyBox();
-	BRUSHED.contactForm();
-	BRUSHED.tweetFeed();
-	BRUSHED.scrollToTop();
-	BRUSHED.utils();
-	BRUSHED.accordion();
-	BRUSHED.toggle();
-	BRUSHED.toolTip();
+	try { BRUSHED.nav(); } catch(e) { console.error('Navigation initialization error:', e); }
+	try { BRUSHED.mobileNav(); } catch(e) { console.error('Mobile navigation initialization error:', e); }
+	try { BRUSHED.listenerMenu(); } catch(e) { console.error('Menu listener initialization error:', e); }
+	try { BRUSHED.menu(); } catch(e) { console.error('Menu highlighting initialization error:', e); }
+	try { BRUSHED.goSection(); } catch(e) { console.error('Section navigation initialization error:', e); }
+	try { BRUSHED.goUp(); } catch(e) { console.error('Scroll to top initialization error:', e); }
+	try { BRUSHED.filter(); } catch(e) { console.error('Filter initialization error:', e); }
+	try { BRUSHED.fancyBox(); } catch(e) { console.error('FancyBox initialization error:', e); }
+	try { BRUSHED.contactForm(); } catch(e) { console.error('Contact form initialization error:', e); }
+	try { BRUSHED.scrollToTop(); } catch(e) { console.error('Scroll to top button initialization error:', e); }
+	try { BRUSHED.utils(); } catch(e) { console.error('Utils initialization error:', e); }
+	try { BRUSHED.accordion(); } catch(e) { console.error('Accordion initialization error:', e); }
+	try { BRUSHED.toggle(); } catch(e) { console.error('Toggle initialization error:', e); }
+	try { BRUSHED.toolTip(); } catch(e) { console.error('Tooltip initialization error:', e); }
 });
 
 $(window).resize(function(){
