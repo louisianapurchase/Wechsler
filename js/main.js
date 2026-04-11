@@ -223,21 +223,19 @@ $(document).ready(function () {
 
 /* ==================================================
    Firebase Configuration & Contact Form
+   Config is loaded from js/config.js (secrets injected by build process)
 ================================================== */
-
-const firebaseConfig = {
-	apiKey: "AIzaSyCDLlSRBEqFPG-bWqnv6nfaJfu1XTLPc_4",
-	authDomain: "mountainliontech-f4a19.firebaseapp.com",
-	projectId: "mountainliontech-f4a19",
-	storageBucket: "mountainliontech-f4a19.firebasestorage.app",
-	messagingSenderId: "605785106462",
-	appId: "1:605785106462:web:70299abcafea61cf74260f"
-};
 
 let db = null;
 
 // Initialize Firebase when it's available
 function initFirebase() {
+	if (typeof firebaseConfig === 'undefined') {
+		// Config not loaded yet, retry
+		setTimeout(initFirebase, 100);
+		return;
+	}
+	
 	if (typeof firebase !== 'undefined' && typeof firebase.initializeApp !== 'undefined') {
 		try {
 			firebase.initializeApp(firebaseConfig);
